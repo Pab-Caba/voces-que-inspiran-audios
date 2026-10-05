@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voces que Inspiran — Audios del toolkit</title>
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #faf7f2;
+    --panel: #ffffff;
+    --line: #e2dcd2;
+    --accent: #a8651f;
+    --accent-ink: #5c3a12;
+    --muted: #6b645a;
+    --focus: #2452a3;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 1rem; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  header {
+    padding: 2.2rem 1.25rem 1.6rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  header h1 {
+    font-size: 1.7rem;
+    margin: 0 0 .4rem;
+    font-weight: 700;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .95rem;
+    max-width: 58ch;
+  }
+  nav.toc {
+    max-width: 720px;
+    margin: 1.2rem auto 0;
+    padding: 0 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  nav.toc a {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .85rem;
+    text-decoration: none;
+    color: var(--accent-ink);
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .35rem .7rem;
+    border-radius: 3px;
+  }
+  nav.toc a:focus-visible, a:focus-visible, audio:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  section.etapa {
+    margin-top: 2.4rem;
+  }
+  section.etapa h2 {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: .4rem;
+    margin: 0 0 1rem;
+  }
+  .etapa-num {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.1rem;
+  }
+  ul.track-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+  }
+  li.track {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: .9rem 1rem;
+  }
+  .track-head {
+    display: flex;
+    gap: .8rem;
+    align-items: flex-start;
+    margin-bottom: .6rem;
+  }
+  .code {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--accent-ink);
+    background: #f1e7d8;
+    border-radius: 4px;
+    padding: .15rem .5rem;
+    white-space: nowrap;
+  }
+  .track-name {
+    margin: 0;
+    font-size: 1.02rem;
+  }
+  .track-tipo {
+    margin: .15rem 0 0;
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .badge {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .72rem;
+    padding: .1rem .4rem;
+    border-radius: 3px;
+  }
+  .badge-nueva { background: #e3edf7; color: #1d4e7a; }
+  .badge-validar { background: #fbeedb; color: #8a5a12; }
+  .badge-existente { background: #e7f0e3; color: #3c6b2e; }
+  audio {
+    width: 100%;
+    height: 38px;
+  }
+  p.pending {
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin: 0;
+  }
+  footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-size: .8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Voces que Inspiran — audios del toolkit</h1>
+    <p>Índice de los audios de la baraja-ruta, organizados por etapa. Cada tarjeta física tiene el código que ves aquí (por ejemplo 1.1); busca ese mismo código para reproducir su audio.</p>
+  </header>
+
+  <nav class="toc" aria-label="Ir a una etapa">
+    <a href="#etapa-1">1. Me preparo</a>
+    <a href="#etapa-2">2. Cuento lo que necesito</a>
+    <a href="#etapa-3">3. Conozco mis derechos</a>
+    <a href="#etapa-4">4. Pido mis ajustes</a>
+    <a href="#etapa-5">5. Si no se cumple</a>
+  </nav>
+
+  <main>
+    <section class="etapa" aria-labelledby="bienvenida">
+      <h2 id="bienvenida"><span class="etapa-num">00</span>Bienvenida</h2>
+      <ul class="track-list">
+        
+        <li class="track">
+          <div class="track-head">
+            <span class="code">00</span>
+            <div class="track-text">
+              <p class="track-name">Bienvenida general</p>
+              <p class="track-tipo">Apertura </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/00.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/00.mp3
+          </audio>
+        </li>
+      </ul>
+    </section>
+    
+      <section class="etapa" aria-labelledby="etapa-1">
+        <h2 id="etapa-1"><span class="etapa-num">1</span>Me preparo</h2>
+        <ul class="track-list">
+          
+        <li class="track">
+          <div class="track-head">
+            <span class="code">1.0</span>
+            <div class="track-text">
+              <p class="track-name">1. Me preparo</p>
+              <p class="track-tipo">Introducción </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/1.0.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/1.0.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">1.1</span>
+            <div class="track-text">
+              <p class="track-name">Me preguntan qué sé hacer</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/1.1.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/1.1.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">1.2</span>
+            <div class="track-text">
+              <p class="track-name">Me ofrecen un cargo</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/1.2.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/1.2.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">1.3</span>
+            <div class="track-text">
+              <p class="track-name">¿Cómo es el lugar de trabajo?</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/1.3.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/1.3.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">1.A</span>
+            <div class="track-text">
+              <p class="track-name">Me llevo esto — Etapa 1</p>
+              <p class="track-tipo">Aprendizaje </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/1.A.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/1.A.mp3
+          </audio>
+        </li>
+        </ul>
+      </section>
+      <section class="etapa" aria-labelledby="etapa-2">
+        <h2 id="etapa-2"><span class="etapa-num">2</span>Cuento lo que necesito</h2>
+        <ul class="track-list">
+          
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.0</span>
+            <div class="track-text">
+              <p class="track-name">2. Cuento lo que necesito</p>
+              <p class="track-tipo">Introducción </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.0.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.0.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.1</span>
+            <div class="track-text">
+              <p class="track-name">¿Cuándo lo digo?</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.1.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.1.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.2</span>
+            <div class="track-text">
+              <p class="track-name">Cuento lo que necesito</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.2.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.2.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.3</span>
+            <div class="track-text">
+              <p class="track-name">Hablo de mis capacidades</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.3.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.3.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.4</span>
+            <div class="track-text">
+              <p class="track-name">¿Qué debería saber quien me entrevista?</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.4.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.4.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">2.A</span>
+            <div class="track-text">
+              <p class="track-name">Me llevo esto — Etapa 2</p>
+              <p class="track-tipo">Aprendizaje </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/2.A.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/2.A.mp3
+          </audio>
+        </li>
+        </ul>
+      </section>
+      <section class="etapa" aria-labelledby="etapa-3">
+        <h2 id="etapa-3"><span class="etapa-num">3</span>Conozco mis derechos</h2>
+        <ul class="track-list">
+          
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.0</span>
+            <div class="track-text">
+              <p class="track-name">3. Conozco mis derechos</p>
+              <p class="track-tipo">Introducción </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.0.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.0.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.1</span>
+            <div class="track-text">
+              <p class="track-name">Me preguntan si mi discapacidad afecta el cargo</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.1.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.1.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.2</span>
+            <div class="track-text">
+              <p class="track-name">No me dejan demostrar lo que sé</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.2.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.2.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.3</span>
+            <div class="track-text">
+              <p class="track-name">No me explican por qué me rechazaron</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.3.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.3.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.4</span>
+            <div class="track-text">
+              <p class="track-name">Me ponen una condición relacionada con mi discapacidad</p>
+              <p class="track-tipo">Situación <span class="badge badge-validar">Por validar</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.4.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.4.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.D</span>
+            <div class="track-text">
+              <p class="track-name">Ruta — etapa 3</p>
+              <p class="track-tipo">Ruta / legal <span class="badge badge-validar">En revisión</span></p>
+            </div>
+          </div>
+          <p class="pending">Contenido en revisión — audio pendiente de validación legal.</p>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">3.A</span>
+            <div class="track-text">
+              <p class="track-name">Me llevo esto — Etapa 3</p>
+              <p class="track-tipo">Aprendizaje </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/3.A.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/3.A.mp3
+          </audio>
+        </li>
+        </ul>
+      </section>
+      <section class="etapa" aria-labelledby="etapa-4">
+        <h2 id="etapa-4"><span class="etapa-num">4</span>Pido mis ajustes</h2>
+        <ul class="track-list">
+          
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.0</span>
+            <div class="track-text">
+              <p class="track-name">4. Pido mis ajustes</p>
+              <p class="track-tipo">Introducción </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.0.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.0.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.1</span>
+            <div class="track-text">
+              <p class="track-name">Mi computador no tiene lector de pantalla</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.1.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.1.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.2</span>
+            <div class="track-text">
+              <p class="track-name">Quiero conocer el lugar antes de empezar</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.2.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.2.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.3</span>
+            <div class="track-text">
+              <p class="track-name">Necesito modificar la forma de recibir información</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.3.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.3.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.4</span>
+            <div class="track-text">
+              <p class="track-name">Necesito una forma diferente de realizar la tarea</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.4.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.4.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.5</span>
+            <div class="track-text">
+              <p class="track-name">Necesito saber a quién pedir el ajuste</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.5.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.5.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.D</span>
+            <div class="track-text">
+              <p class="track-name">Ruta — etapa 4</p>
+              <p class="track-tipo">Ruta / legal <span class="badge badge-validar">En revisión</span></p>
+            </div>
+          </div>
+          <p class="pending">Contenido en revisión — audio pendiente de validación legal.</p>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">4.A</span>
+            <div class="track-text">
+              <p class="track-name">Me llevo esto — Etapa 4</p>
+              <p class="track-tipo">Aprendizaje </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/4.A.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/4.A.mp3
+          </audio>
+        </li>
+        </ul>
+      </section>
+      <section class="etapa" aria-labelledby="etapa-5">
+        <h2 id="etapa-5"><span class="etapa-num">5</span>Si no se cumple</h2>
+        <ul class="track-list">
+          
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.0</span>
+            <div class="track-text">
+              <p class="track-name">5. Si no se cumple</p>
+              <p class="track-tipo">Introducción </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/5.0.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/5.0.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.1</span>
+            <div class="track-text">
+              <p class="track-name">Pedí el ajuste y no lo atendieron</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/5.1.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/5.1.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.2</span>
+            <div class="track-text">
+              <p class="track-name">Siento que me discriminaron</p>
+              <p class="track-tipo">Situación <span class="badge badge-existente">Existente</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/5.2.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/5.2.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.3</span>
+            <div class="track-text">
+              <p class="track-name">Me dijeron que no pueden hacerlo</p>
+              <p class="track-tipo">Situación <span class="badge badge-nueva">Nueva</span></p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/5.3.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/5.3.mp3
+          </audio>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.D</span>
+            <div class="track-text">
+              <p class="track-name">Ruta — etapa 5</p>
+              <p class="track-tipo">Ruta / legal <span class="badge badge-validar">En revisión</span></p>
+            </div>
+          </div>
+          <p class="pending">Contenido en revisión — audio pendiente de validación legal.</p>
+        </li>
+
+        <li class="track">
+          <div class="track-head">
+            <span class="code">5.A</span>
+            <div class="track-text">
+              <p class="track-name">Me llevo esto — Etapa 5</p>
+              <p class="track-tipo">Aprendizaje </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/5.A.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/5.A.mp3
+          </audio>
+        </li>
+        </ul>
+      </section>
+    <section class="etapa" aria-labelledby="cierre">
+      <h2 id="cierre"><span class="etapa-num">99</span>Cierre</h2>
+      <ul class="track-list">
+        
+        <li class="track">
+          <div class="track-head">
+            <span class="code">99</span>
+            <div class="track-text">
+              <p class="track-name">Cierre general</p>
+              <p class="track-tipo">Cierre </p>
+            </div>
+          </div>
+          <audio controls preload="none">
+            <source src="audio/99.mp3" type="audio/mpeg">
+            Tu navegador no reproduce audio. El archivo debería estar en audio/99.mp3
+          </audio>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Proyecto Voces que Inspiran · Para actualizar: reemplaza el archivo correspondiente dentro de la carpeta audio/ (mismo nombre de código) y vuelve a publicar.
+  </footer>
+</body>
+</html>
